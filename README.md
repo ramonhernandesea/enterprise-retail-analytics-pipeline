@@ -45,7 +45,7 @@ I wanted this project to reflect how analytics is used in a real business settin
 
 Azure Blob Storage → Snowflake → SQL Transformations → Dimensional Model → Analytics Views → Tableau Dashboard
 
-## What I Learned
+## Lessons Learned
 
 One of the biggest takeaways from this project was seeing how each part of the process builds on the next. Working through Azure Blob Storage, Snowflake, SQL transformations, dimensional modeling, and Tableau reinforced how important a solid data foundation is before building reports and dashboards.
 
