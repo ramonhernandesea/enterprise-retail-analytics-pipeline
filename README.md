@@ -2,6 +2,12 @@
 
 This project demonstrates an end-to-end retail analytics workflow using Azure Blob Storage, Snowflake, SQL, dimensional modeling, and Tableau. My goal was to build the full analytics pipeline, from loading and transforming raw data to reporting and business insights.
 
+## Architecture
+
+The diagram below illustrates the end-to-end analytics workflow used in this project.
+
+![Architecture](images/01_architecture_diagram.png)
+
 ## Dashboard Preview
 
 ![Dashboard Preview](dashboard-preview.png)
