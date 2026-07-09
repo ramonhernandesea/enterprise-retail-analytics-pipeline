@@ -1,16 +1,77 @@
 # Enterprise Retail Analytics Pipeline
 
-This project demonstrates an end-to-end retail analytics workflow using Azure Blob Storage, Snowflake, SQL, dimensional modeling, and Tableau. My goal was to build the full analytics pipeline, from loading and transforming raw data to reporting and business insights.
+This project demonstrates an end-to-end retail analytics pipeline using Azure Blob Storage, Snowflake, SQL, dimensional modeling, and Tableau. It follows the complete analytics lifecycle, from loading raw retail data to transforming it into a dimensional data warehouse and building an interactive Tableau dashboard.
+
+## Project Workflow
+
+Azure Blob Storage → Snowflake External Stages → SQL Transformations → Star Schema Data Warehouse → Analytics Views → Tableau Dashboard
+
+## Technology Stack
+
+- Azure Blob Storage
+- Snowflake
+- SQL
+- ETL
+- Star Schema
+- Tableau
 
 ## Architecture
 
-The diagram below illustrates the end-to-end analytics workflow used in this project.
+The architecture below provides a high-level overview of the complete analytics pipeline. Retail CSV files are stored in Azure Blob Storage, ingested into Snowflake through external stages, transformed using SQL into a dimensional data warehouse, and ultimately visualized in Tableau for business reporting.
 
-![Architecture](images/01_architecture_diagram.png)
+![Enterprise Retail Analytics Pipeline](./images/01_architecture_diagram.png)
+
+## Project Walkthrough
+
+The sections below walk through how the data moves from raw CSV files to the final Tableau dashboard.
+
+### 1. Azure Storage Account
+
+I used Azure Storage as the starting point for the project. It served as the cloud storage location for the raw retail CSV files before they were loaded into Snowflake.
+
+![Azure Storage Account](./images/02_azure_storage_account.png)
+
+### 2. Azure Blob Containers
+
+Each dataset was organized into its own blob container. Keeping the files separated made it easier to manage the data and load it into Snowflake.
+
+![Azure Blob Containers](./images/03_azure_blob_containers.png)
+
+### 3. Snowflake External Stages
+
+I created external stages in Snowflake to connect directly to the Azure Blob containers. This allowed the source files to be loaded into the warehouse without moving them manually.
+
+![Snowflake External Stage Objects](./images/04_snowflake_external_stage_objects.png)
+
+### 4. Snowflake Database Objects
+
+Once the data was loaded, I built the database objects needed for the warehouse, including staging tables, dimension tables, fact tables, and supporting objects.
+
+![Snowflake Database Objects](./images/05_snowflake_database_objects.png)
+
+### 5. Analytics Views
+
+To make reporting easier, I created SQL views that combined the warehouse data into business-friendly datasets for Tableau.
+
+![Snowflake Views](./images/06_snowflake_views.png)
+
+### 6. Fact Table Validation
+
+Before building the dashboard, I verified that the data was loading correctly by reviewing the fact tables and confirming the transformations produced the expected results.
+
+![Fact SalesActual Preview](./images/07_fact_salesactual_preview.png)
+
+### 7. Tableau Data Source
+
+The Tableau workbook connects directly to the Snowflake views, allowing the dashboard to use curated datasets instead of querying the warehouse tables directly.
+
+![Tableau Data Source](./images/08_tableau_data_source.png)
 
 ## Dashboard Preview
 
-![Dashboard Preview](dashboard-preview.png)
+The completed Tableau dashboard provides an interactive view of store performance, weekly sales trends, and bonus allocation recommendations.
+
+![Dashboard Preview](./dashboard-preview.png)
 
 ## Dashboard
 
@@ -21,15 +82,6 @@ The diagram below illustrates the end-to-end analytics workflow used in this pro
 ## Project Overview
 
 I wanted this project to reflect how analytics is used in a real business setting. Starting with raw retail sales data, I stored the files in Azure Blob Storage, transformed the data in Snowflake with SQL, built a dimensional model, and created an interactive Tableau dashboard to answer common business questions.
-
-## Technology Stack
-
-- Azure Blob Storage
-- Snowflake
-- SQL
-- ETL
-- Star Schema
-- Tableau
 
 ## Dashboard Features
 
@@ -63,7 +115,7 @@ Another habit I picked up was using a SELECT statement to preview my data before
 
 ## Future Improvements
 
-- Automate data refreshes
-- Add forecasting
-- Expand the dashboard with additional KPIs
-- Make the bonus pool configurable
+- Automate data updates using scheduled Snowflake tasks.
+- Expand the dashboard with additional KPIs and executive-level metrics.
+- Incorporate sales forecasting to support planning and trend analysis.
+- Parameterize the bonus allocation logic so business users can adjust assumptions without modifying SQL.
