@@ -2,6 +2,8 @@
 
 This project demonstrates an end-to-end retail analytics pipeline using Azure Blob Storage, Snowflake, SQL, dimensional modeling, and Tableau. It follows the complete analytics lifecycle, from loading raw retail data to transforming it into a dimensional data warehouse and building an interactive Tableau dashboard.
 
+**Portfolio:** [ramonhernandesea.github.io](https://ramonhernandesea.github.io)
+
 ## Project Workflow
 
 Azure Blob Storage → Snowflake External Stages → SQL Transformations → Star Schema Data Warehouse → Analytics Views → Tableau Dashboard
